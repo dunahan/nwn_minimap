@@ -1,7 +1,7 @@
 import colors, os, tables, sequtils, strutils
 import neverwinter/[erf, gff, key, resfile, resman]
 import regex
-import nimtga
+import nimtga, nimpng
 
 type
   Tile = tuple
@@ -69,7 +69,8 @@ proc generateMap(rm: ResMan, tiles: seq[Tile], width, height: int, tt: Table[int
     echo "Error: Could not write image: " & filename & ".tga"
 
 if paramCount() == 0:
-  echo """As parameters please provide paths to files of type are, hak, mod or key.
+  echo """Usage: minimap "<path/to the/file.are or file.mod>" <path/to/nwn_base.key>, <path/to/file1.hak>, <path/to/file2.hak>, ...
+As parameters please provide paths to files of type are, hak, mod or key.
 Add nwn_base.key and your tilest haks or the output maps won't be complete (showing red tiles)."""
 
 let rm = newResMan()
